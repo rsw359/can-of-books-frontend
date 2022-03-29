@@ -8,12 +8,15 @@ import {
   Route
 } from "react-router-dom";
 
+
+
+
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      user: null,
+      user: {},//CHANGED FROM NULL TO an empty object
     }
   }
 
