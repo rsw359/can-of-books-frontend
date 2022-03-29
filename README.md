@@ -1,14 +1,29 @@
-# Start your own "Can of Books" App
+# Project Name
 
-This repository has starter code to begin work on creating your own online bookshelf.
+**Author**: Roger Wells and Katrina Hill
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
-## What can books do?
+## Overview
 
-Books are life-changing. They have the power to enlighten, educate, entertain, heal, and help us grow. Build out this code base to create an web app to track what books have impacted you, and what's recommended to read next.
+This project is designed to allow users to catalog their favorite books and make recommendations to other users.
+Books can have a large impact on the reader, so what better way to have a positive influence on others than to share books that you have enjoyed.
 
-## Use this template
+## Getting Started
 
-Clone this repo to your own account with the green "Use this template" button. Then, add any collaborators. Now you are ready to start adding features! Deploy your site to let the world know which books have had the greatest impact on you, and what's recommended. Enjoy!
+In order to build this project, it is necessary to first create the database in Mongo. We then build the schema and and setup communication between the local server and the database. From there, we setup our front end in react, and get our front and back end talking so we can send queries. Lastly, 
+
+## Architecture
+<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+
+## Change Log
+<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+## Estimates
+<!-- See below -->
+
+## Credit and Collaborations
 
 ## Contractural agreement
 
@@ -35,3 +50,13 @@ What will your team do if one person is pulling all the weight while the other p
 What will your team do if one person is taking over the project and not letting the other member contribute? Take time out and express our feelings about not being able to contribute property.
 
 How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level? Communication and letting each other know that we don’t understand the material and need help.
+
+Name of feature: *Front End Deployment*
+
+Estimate of time needed to complete: 4 hours
+
+Start time: 6 am
+
+Finish time: 10:30
+
+Actual time needed to complete: 4.5 hours
