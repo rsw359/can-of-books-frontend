@@ -10,7 +10,7 @@ Books can have a large impact on the reader, so what better way to have a positi
 
 ## Getting Started
 
-In order to build this project, it is necessary to first create the database in Mongo. We then build the schema and and setup communication between the local server and the database. From there, we setup our front end in react, and get our front and back end talking so we can send queries. Lastly, 
+In order to build this project, it is necessary to first create the database in Mongo. We then build the schema and and setup communication between the local server and the database. From there, we setup our front end in react, and get our front and back end talking so we can send queries. Lastly,
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
@@ -60,3 +60,11 @@ Start time: 6 am
 Finish time: 10:30
 
 Actual time needed to complete: 4.5 hours
+
+Name of feature: *Backend Get and Post*
+
+Start time: 6 am
+
+Finish time: 1 pm
+
+Actual time needed to complete: 7 hours
