@@ -3,29 +3,37 @@ import { Form, Button } from 'react-bootstrap';
 
 class LoginForm extends Component {
   // write a state function for user state
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: null,
+    };
+  }
+
   handleState = (e) => {
     this.setState({
-      user: e.target.value
+      email: e.target.value
     });
   }
   //handle submit to call the props login function, passes in this.state.user
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.loginHandler(this.state.user);
-  }
+    this.props.loginHandler(this.state.email);
+  };
   render() {
-    /* TODO: create a simple login form that collects username and and email, and lets parent component know when form has been submitted */
+    console.log(this.state.user);
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group>
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" onInput={this.handleState} />
+          <Form.Control type="email" placeholder="Enter email" onChange={this.handleState} />
         </Form.Group>
 
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
+        </Form.Group> */}
 
         <Button variant="primary" type="submit">Submit</Button>
       </Form>

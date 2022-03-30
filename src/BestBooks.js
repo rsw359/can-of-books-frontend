@@ -42,15 +42,11 @@ class BestBooks extends React.Component {
                 <Carousel.Item key={book._id}>
                   <h2>{book.title}</h2>
                   <p>{book.description}</p>
-                  {/* <img
-                className="d-block w-100"
-                src="holder.js/800x400?text=First slide&bg=373940"
-                alt="First slide" /> */}
                 </Carousel.Item>;
               }
               )}
             </Carousel>
-          ) : (<p>There are no books. Do you even read?</p>)
+          ) : (<p>There are no books.</p>)
         }
       </>
     );
