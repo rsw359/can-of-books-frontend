@@ -15,8 +15,7 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   getBooks = async () => {
     try {
-      
-      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);      
+      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);
       this.setState({
         books: results.data
       });
