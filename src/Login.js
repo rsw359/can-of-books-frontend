@@ -8,9 +8,7 @@ import './Login.css';
 class Login extends React.Component {
   constructor(props) {
     super(props);
-    
   }
-  
   render() {
     return (
       <Card style={{ width: '18rem' }}>
