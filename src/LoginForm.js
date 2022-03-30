@@ -1,5 +1,5 @@
-import { Component } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Component } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
 class LoginForm extends Component {
   // write a state function for user state

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 class LogoutButton extends Component {
   constructor(props) {
@@ -7,7 +7,6 @@ class LogoutButton extends Component {
       user: null,
     };
   }
-  
   render() {
     return (
       <button onClick={this.props.onLogout}>
