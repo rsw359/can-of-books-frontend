@@ -6,7 +6,14 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom";
+} from 'react-router-dom';
+import BestBooks from './BestBooks';
+import Profile from './Profile';
+// import LoginButton from './LoginButton';
+import LoginForm from './LoginForm';
+import LogoutButton from './LogoutButton';
+import Login from './Login';
+
 
 
 
@@ -16,37 +23,46 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},//CHANGED FROM NULL TO an empty object
-    }
+      user: null,
+    };
   }
 
   loginHandler = (user) => {
     this.setState({
       user,
-    })
+    });
   }
 
   logoutHandler = () => {
     this.setState({
       user: null,
-    })
+    });
   }
 
   render() {
+
     return (
       <>
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
             <Route exact path="/">
-              {/* TODO: if the user is logged in, render the `BestBooks` component, if they are not, render the `Login` component */}
+              {this.state.user ? <BestBooks user={this.state.user} /> : <Login userLogin={this.loginHandler} />}
             </Route>
-            {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
+            <Route exact path="/Profile">
+              <Profile userInfo={this.state.user} />
+            </Route>
+            <Route exact path="/LogoutButton">
+              <LoginForm userLogin={this.loginHandler} />
+            </Route>
+            <Route exact path="/LogoutButton">
+              <LogoutButton onLogout={this.logoutHandler}/>
+            </Route>
           </Switch>
           <Footer />
         </Router>
       </>
-    )
+    );
   }
 }
 

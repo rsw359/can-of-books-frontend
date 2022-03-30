@@ -9,73 +9,51 @@ class BestBooks extends React.Component {
     super(props);
     this.state = {
       books: []
-    }
+    };
   }
 
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   getBooks = async () => {
     try {
-      let results = await axios.get(`${SERVER}/books`);//do i need to use: process.env.REACT_APP_SERVER ??
+      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);//do i need to use: process.env.REACT_APP_SERVER ??
       this.setState({
         books: results.data
-      })
+      });
     } catch (error) {
-      console.log('an error has occured: ', error.response.data)
+      console.log('Error: ', error.response.data);
     }
   }
 
 
-  render() {
+  componentDidMount() {
+    this.getBooks();
+  }
 
+
+  render() {
     /* TODO: render user's books in a Carousel */
 
     return (
       <>
-        <Carousel fade>
-          <Carousel.Item>
-            <h2>My Essential Lifelong Learning &amp; Formation Shelf</h2>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=First slide&bg=373940"
-              alt="First slide"/>
-              <Carousel.Caption>
-                <h3>{this.state.books.length ? (
-                <p>Book Carousel coming soon</p>) :
-                (<h3>No Books Found :(</h3>)}</h3>
-              </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=Second slide&bg=282c34"
-              alt="Second slide"/>
-
-              <Carousel.Caption>
-                <h3>{this.state.books.length ? (
-                <p>Book Carousel coming soon</p>) :
-                (<h3>No Books Found :(</h3>)}</h3>
-              </Carousel.Caption>
-
-          </Carousel.Item>
-          <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src="holder.js/800x400?text=Third slide&bg=20232a"
-              alt="Third slide"/>
-
-              <Carousel.Caption>
-                <h3>{this.state.books.length ? (
-                <p>Book Carousel coming soon</p>) :
-                (<h3>No Books Found :(</h3>)}</h3>
-              </Carousel.Caption>
-
-          </Carousel.Item>
-        </Carousel>
-
-
-        {/* {this.state.books.length ? (<p>Book Carousel coming soon</p>) : (<h3>No Books Found :(</h3>)} */}
+        {
+          this.state.books.length ? (
+            <Carousel fade>
+              {this.state.books.map(book => {
+                <Carousel.Item key={book._id}>
+                  <h2>{book.title}</h2>
+                  <p>{book.description}</p>
+                  {/* <img
+                className="d-block w-100"
+                src="holder.js/800x400?text=First slide&bg=373940"
+                alt="First slide" /> */}
+                </Carousel.Item>;
+              }
+              )}
+            </Carousel>
+          ) : (<p>There are no books. Do you even read?</p>)
+        }
       </>
-    )
+    );
   }
 }
 
