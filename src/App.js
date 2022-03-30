@@ -28,10 +28,11 @@ class App extends React.Component {
   }
 
   loginHandler = (user) => {
-    this.setState({
-      user,
-    });
-  }
+    console.log(user);
+    // this.setState({
+    //   user,
+    // });
+  };
 
   logoutHandler = () => {
     this.setState({
@@ -40,7 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
       <>
         <Router>
@@ -52,7 +52,7 @@ class App extends React.Component {
             <Route exact path="/Profile">
               <Profile userInfo={this.state.user} />
             </Route>
-            <Route exact path="/LogoutButton">
+            <Route exact path="/LoginButton">
               <LoginForm userLogin={this.loginHandler} />
             </Route>
             <Route exact path="/LogoutButton">
