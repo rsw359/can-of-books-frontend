@@ -15,7 +15,7 @@ class BestBooks extends React.Component {
   /* TODO: Make a GET request to your API to fetch books for the logged in user  */
   getBooks = async () => {
     try {
-      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);//do i need to use: process.env.REACT_APP_SERVER ??
+      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);
       this.setState({
         books: results.data
       });
@@ -36,14 +36,14 @@ class BestBooks extends React.Component {
     return (
       <>
         {
-          this.state.books.length ? (
+          this.state.books ? (
             <Carousel fade>
-              {this.state.books.map(book => {
+              {this.state.books.map(book => (
                 <Carousel.Item key={book._id}>
                   <h2>{book.title}</h2>
                   <p>{book.description}</p>
-                </Carousel.Item>;
-              }
+                </Carousel.Item>
+              )
               )}
             </Carousel>
           ) : (<p>There are no books.</p>)

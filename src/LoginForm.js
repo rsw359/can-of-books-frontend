@@ -11,6 +11,7 @@ class LoginForm extends Component {
   }
 
   handleState = (e) => {
+    e.preventDefault();
     this.setState({
       email: e.target.value
     });

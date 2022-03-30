@@ -31,7 +31,7 @@ class App extends React.Component {
     console.log(user);
     this.setState({
       user,
-    });
+    }, () => console.log(this.state.user));
   };
 
   logoutHandler = () => {
@@ -41,7 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.user);
     return (
       <>
         <Router>
