@@ -68,3 +68,22 @@ Start time: 6 am
 Finish time: 1 pm
 
 Actual time needed to complete: 7 hours
+
+Name of feature: Books Carousel
+
+Estimate of time needed to complete: 2 hours
+
+Start time:5am
+
+Finish time: noon
+
+Actual time needed to complete: 7
+
+Name of feature: Add a book
+
+Estimate of time needed to complete: 7hours
+
+Start time: 6 am 
+
+Finish time: not
+Actual time needed to complete: unknown
