@@ -22,9 +22,9 @@ class BestBooks extends React.Component {
       console.log('Error: ', error.response.data);
     }
   }
-  postBooks = async (postedBook) => {
+  postBooks = async (newBook) => {
     try {
-      let results = await axios.post(`${SERVER}/books`, postedBook);
+      let results = await axios.post(`${SERVER}/books`, newBook);
       this.setState({
         books: [...this.state.books, results.data]
       });
