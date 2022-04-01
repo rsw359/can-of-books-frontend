@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Carousel, Container, Button } from 'react-bootstrap';
 import Newbook from './Newbook';
-// import Button from './Deletebutton';
+
 
 let SERVER = process.env.REACT_APP_SERVER;
 

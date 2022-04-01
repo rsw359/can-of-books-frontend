@@ -51,7 +51,7 @@ What will your team do if one person is taking over the project and not letting 
 
 How will you approach each other and the challenge of building an application knowing that it is impossible for two people to be at the exact same place in understanding and skill level? Communication and letting each other know that we don’t understand the material and need help.
 
-Name of feature: *Front End Deployment*
+## Name of feature: *Front End Deployment*
 
 Estimate of time needed to complete: 4 hours
 
@@ -61,7 +61,7 @@ Finish time: 10:30
 
 Actual time needed to complete: 4.5 hours
 
-Name of feature: *Backend Get and Post*
+## Name of feature: *Backend Get and Post*
 
 Start time: 6 am
 
@@ -69,7 +69,7 @@ Finish time: 1 pm
 
 Actual time needed to complete: 7 hours
 
-Name of feature: Books Carousel
+## Name of feature: *Books Carousel*
 
 Estimate of time needed to complete: 2 hours
 
@@ -79,11 +79,21 @@ Finish time: noon
 
 Actual time needed to complete: 7
 
-Name of feature: Add a book
+## *Name of feature: Add a book*
 
 Estimate of time needed to complete: 7hours
 
-Start time: 6 am 
+Start time: 6 am
 
-Finish time: not
-Actual time needed to complete: unknown
+Finish time: 1pm
+Actual time needed to complete: 7
+
+## *Name of feature: Delete*
+
+Estimate of time needed to complete: 7hours
+
+Start time: 11 am
+
+Finish time: 1:30 pm
+
+Actual time needed to complete: 3
