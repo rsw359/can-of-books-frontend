@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Carousel, Container, Button } from 'react-bootstrap';
 import Newbook from './Newbook';
-
+import UpdateBookModal from './UpdateBookModal';
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -10,7 +10,8 @@ class BestBooks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: []
+      books: [],
+      showModal: false
     };
   }
   getBooks = async () => {
@@ -42,15 +43,15 @@ class BestBooks extends React.Component {
       let updatedBook = await axios.put(url, updatedEntry);
       console.log(updatedEntry);
       let updatedBookData = this.state.books.map(currentBook => {
-        return currentBook._id === updatedEntry._id ? updatedBook.data : 
-        currentBook;
+        return currentBook._id === updatedEntry._id ? updatedBook.data :
+          currentBook;
       });
       this.setState({
         books: updatedBookData
       });
-    }catch(error){
+    } catch (error) {
       console.error('update error', error.message);
-    };
+    }
   };
 
 
@@ -72,11 +73,23 @@ class BestBooks extends React.Component {
     this.getBooks();
   }
 
+  displayModal = () => {
+    this.setState({
+      showModal: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      showModal: false
+    });
+  };
+
 
   render() {
     return (
       <>
-        <h2>Something something something best books, I dunno. . . .</h2>
+        <h2>BOOKshare</h2>
         {this.state.books ? (
           <Container>
             <Carousel>
@@ -90,6 +103,8 @@ class BestBooks extends React.Component {
                     <h2>{book.title}</h2>
                     <p>{book.description}</p>
                     <Button onClick={() => this.deleteBook(book._id)}>Delete</Button>
+                    <Button onClick={this.displayModal}>Edit a Book</Button>
+                    <UpdateBookModal updateBook={this.updateBook} user={this.props.user} book={book} showModal={this.state.showModal} hideModal={this.hideModal} />
                   </Carousel.Caption>
                 </Carousel.Item>
               ))}
@@ -99,7 +114,7 @@ class BestBooks extends React.Component {
           </Container>
         ) : (
           <Container>
-            <h3>No books? Thats embarassing, you should read more.</h3>
+            <h3>Hmm, no books here. Why dont you add one?</h3>
             <Newbook postBook={this.postBooks} user={this.props.user} getNew={this.getBooks} />
           </Container>
         )}

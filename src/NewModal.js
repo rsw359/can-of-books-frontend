@@ -6,7 +6,6 @@ class NewModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // newEntryModal: false,
       title: '',
       description: '',
       author: '',
@@ -54,7 +53,7 @@ class NewModal extends Component {
         onHide={this.props.hide}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add a book, Dammit</Modal.Title>
+          <Modal.Title>Add a book</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -65,7 +64,7 @@ class NewModal extends Component {
               <Form.Label>Description</Form.Label>
               <Form.Control type="text" onInput={this.handleDescription} />
               <Form.Label>author</Form.Label>
-              <Form.Check type="checkbox" onInput={this.handleAuthor} label="author" />
+              <Form.Check type="text" onInput={this.handleAuthor} label="author" />
             </Form.Group>
             <Button variant="primary" type="submit" >Submit</Button>
           </Form>
