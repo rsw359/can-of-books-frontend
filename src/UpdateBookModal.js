@@ -47,9 +47,9 @@ class UpdateBookModal extends Component {
       author: e.target.value
     });
   }
-  setEditBook = () => {
-    this.props.updateBook();
-  };
+  // setEditBook = () => {
+  //   this.props.updateBook();
+  // };
   render() {
     return (
       <>
@@ -64,15 +64,15 @@ class UpdateBookModal extends Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" onInput={this.setTitleState} />
+              <Form.Control type="text" onInput={this.handleTitle} />
             </Form.Group>
             <Form.Group controlId="desc">
               <Form.Label>Description</Form.Label>
-              <Form.Control type="text" onInput={this.setDescState} />
+              <Form.Control type="text" onInput={this.handleDescription} />
             </Form.Group>
             <Form.Group controlId="author">
               <Form.Label>Author</Form.Label>
-              <Form.Control type="text" onInput={this.setAuthorState} />
+              <Form.Control type="text" onInput={this.handleAuthor} />
             </Form.Group>
             <Button type="submit">Do It!</Button>
           </Form>

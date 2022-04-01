@@ -96,7 +96,7 @@ class BestBooks extends React.Component {
               {this.state.books.map((book, idx) => (
                 <Carousel.Item key={idx}>
                   <img
-                    className="d-block w-100"
+                    className="rounded mx-auto d-block"
                     src="https://place-hold.it/300x500"
                     alt="First slide" />
                   <Carousel.Caption>
