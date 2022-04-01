@@ -9,17 +9,23 @@ class NewModal extends Component {
       // newEntryModal: false,
       title: '',
       description: '',
-      author: ''
+      author: '',
+      email: ''
     };
   }
   
-  createBook = () => {
+  createBook = (e) => {
+    e.preventDefault();
     let newBook= ({
       title: this.state.title,
       description: this.state.description,
-      author: this.state.author
+      author: this.state.author,
+      email: this.props.user
     });
-    this.props.postBooks(newBook);
+    console.log(newBook);
+    this.props.postBook(newBook);
+    this.props.hide();
+    
   }
   handleTitle = (e) => {
     e.preventDefault();
@@ -40,6 +46,8 @@ class NewModal extends Component {
     });
   }
 
+
+
   render() {
     return (
       <Modal
@@ -52,7 +60,7 @@ class NewModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.createBook}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
               <Form.Control type="text" onInput={this.handleTitle} />
@@ -61,7 +69,7 @@ class NewModal extends Component {
               <Form.Label>author</Form.Label>
               <Form.Check type="checkbox" onInput={this.handleAuthor} label="author" />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={this.createBook}>Submit</Button>
+            <Button variant="primary" type="submit" >Submit</Button>
           </Form>
         </Modal.Body>
       </Modal>

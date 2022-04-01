@@ -24,6 +24,7 @@ class Newbook extends Component {
     this.setState({
       newEntryModal: false,
     });
+    this.props.getNew();
   };
 
 
@@ -32,7 +33,7 @@ class Newbook extends Component {
 
       <main>
         <Button variant="warning" onClick={this.displayModal}>Add a book</Button>
-        <NewModal postBooks={this.props.postBooks} display={this.state.newEntryModal} hide={this.state.hideModal} />
+        <NewModal postBook={this.props.postBook} display={this.state.newEntryModal} hide={this.hideModal} user={this.props.user}/>
       </main>
 
     );
