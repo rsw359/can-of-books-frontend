@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
-import { Button, Container } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import NewModal from './NewModal';
 
-export default class Newbook extends Component {
+class Newbook extends Component {
   constructor(props) {
     super(props);
     this.state = {
       newEntryModal: false,
-      title: '',
-      description: '',
-      status: '',
-      email: ''
     };
   }
 
 
-  displayModal = () => {
+  displayModal= () => {
+    console.log('clicked');
     this.setState({
       newEntryModal: true,
     });
+    console.log(this.state.newEntryModal);
   };
+
   hideModal = () => {
     this.setState({
       newEntryModal: false,
     });
+    this.props.getNew();
   };
 
 
   render() {
     return (
 
-      <Container>
-        <Button variant="warning" onClick={this.displayModal}>Add a book</Button>{' '}
-        <NewModal display={this.state.displayModal} hide={this.state.hideModal} />
-      </Container>
+      <main>
+        <Button variant="warning" onClick={this.displayModal}>Add a book</Button>
+        <NewModal postBook={this.props.postBook} display={this.state.newEntryModal} hide={this.hideModal} user={this.props.user}/>
+      </main>
 
     );
 
@@ -41,3 +41,5 @@ export default class Newbook extends Component {
   }
 
 }
+
+export default Newbook;

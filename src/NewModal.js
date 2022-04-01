@@ -2,41 +2,49 @@ import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 
-export default class NewModal extends Component {
+class NewModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newEntryModal: false,
+      // newEntryModal: false,
       title: '',
       description: '',
-      status: '',
+      author: '',
       email: ''
     };
   }
   createBook = (e) => {
     e.preventDefault();
-    let createdBook = {
-      title: e.target.title,
-      description: e.target.description,
-      status: e.target.status
-    };
-    console.log(createdBook);
+    let newBook= ({
+      title: this.state.title,
+      description: this.state.description,
+      author: this.state.author,
+      email: this.props.user
+    });
+    console.log(newBook);
+    this.props.postBook(newBook);
+    this.props.hide();
   }
   handleTitle = (e) => {
+    e.preventDefault();
     this.setState({
       title: e.target.value
     });
   }
   handleDescription = (e) => {
+    e.preventDefault();
     this.setState({
       description: e.target.value
     });
   }
-  handleStatus = (e) => {
+  handleAuthor = (e) => {
+    e.preventDefault();
     this.setState({
-      status: e.target.value
+      author: e.target.value
     });
   }
+
+
 
   render() {
     return (
@@ -50,19 +58,21 @@ export default class NewModal extends Component {
         </Modal.Header>
 
         <Modal.Body>
-          <Form onSubmit={this.handleSubmit}>
+          <Form onSubmit={this.createBook}>
             <Form.Group>
-              <Form.label>Title</Form.label>
+              <Form.Label>Title</Form.Label>
               <Form.Control type="text" onInput={this.handleTitle} />
-              <Form.label>Description</Form.label>
+              <Form.Label>Description</Form.Label>
               <Form.Control type="text" onInput={this.handleDescription} />
-              <Form.label>Status</Form.label>
-              <Form.Check type="checkbox" onInput={this.handleStatus} label="Status" />
+              <Form.Label>author</Form.Label>
+              <Form.Check type="checkbox" onInput={this.handleAuthor} label="author" />
             </Form.Group>
-            <Button variant="primary" type="submit">Submit</Button>
+            <Button variant="primary" type="submit" >Submit</Button>
           </Form>
         </Modal.Body>
       </Modal>
     );
   }
 }
+
+export default NewModal;
