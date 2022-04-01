@@ -13,7 +13,6 @@ class NewModal extends Component {
       email: ''
     };
   }
-  
   createBook = (e) => {
     e.preventDefault();
     let newBook= ({
@@ -25,7 +24,6 @@ class NewModal extends Component {
     console.log(newBook);
     this.props.postBook(newBook);
     this.props.hide();
-    
   }
   handleTitle = (e) => {
     e.preventDefault();

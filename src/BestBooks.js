@@ -49,7 +49,7 @@ class BestBooks extends React.Component {
     } catch (error) {
       console.log('delete book error: ', error.response.data);
     }
-    this.getBooks();    
+    this.getBooks();
   }
   componentDidMount() {
     this.getBooks();

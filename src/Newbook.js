@@ -6,9 +6,8 @@ class Newbook extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newEntryModal: false,       
+      newEntryModal: false,
     };
-    
   }
 
 
