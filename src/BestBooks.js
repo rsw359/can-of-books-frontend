@@ -36,6 +36,23 @@ class BestBooks extends React.Component {
     }
   }
 
+  updateBook = async (updatedEntry) => {
+    try {
+      let url = `${SERVER}/books/${updatedEntry._id}`;
+      let updatedBook = await axios.put(url, updatedEntry);
+      console.log(updatedEntry);
+      let updatedBookData = this.state.books.map(currentBook => {
+        return currentBook._id === updatedEntry._id ? updatedBook.data : 
+        currentBook;
+      });
+      this.setState({
+        books: updatedBookData
+      });
+    }catch(error){
+      console.error('update error', error.message);
+    };
+  };
+
 
   deleteBook = async (id) => {
     try {
