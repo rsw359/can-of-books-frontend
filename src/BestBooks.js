@@ -16,38 +16,33 @@ class BestBooks extends React.Component {
     };
   }
   getBooks = async () => {
-    const token = await this.props.auth0.getIdTokenClaims();
-    const jwt = token.__raw;
-    console.log(jwt); 
-    try {
-      let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);
-      this.setState({
-        books: results.data
-      });
-
-    } catch (error) {
-      console.log('get book error: ', error.response.data);
-    }
-  };
-
-  getBooks = async () => {
-    // Stopped for the day
     // JSON Web Token = JWT (pronounced JOT)
     if (this.props.auth0.isAuthenticated) {
       // get token:
       const res = await this.props.auth0.getIdTokenClaims();
-      
-      const jwt = res.__raw;
 
+
+      // MUST use double underscores
+      const jwt = res.__raw;
+      // a console.log of the token // this is as far as you need to go for the lab. Get the jwt to log to the console.
+
+      // as per axios docs, we can send an config object to make our call as well
       const config = {
         method: 'get',
         baseURL: process.env.REACT_APP_SERVER,
         url: '/books',
         headers: {"Authorization": `Bearer ${jwt}`}
       };
-      const bookResults = await axios(config);
+      const bookResults = await axios(config);    
 
+
+      //  // the way we have been doing it:
+      // let url = `${process.env.REACT_APP_SERVER}/books`;
+      // const bookResults = await axios.get(url);
       console.log(bookResults.data);
+      this.setState ({
+        books: bookResults.data
+      })
     }
   }
 
@@ -68,7 +63,8 @@ class BestBooks extends React.Component {
       let updatedBook = await axios.put(url, updatedEntry);
       console.log(updatedEntry);
       let updatedBookData = this.state.books.map(currentBook => {
-        return currentBook._id === updatedEntry._id ? updatedBook.data :
+        return currentBook._id === updatedEntry._id ?
+          updatedBook.data :
           currentBook;
       });
       this.setState({
@@ -121,7 +117,7 @@ class BestBooks extends React.Component {
               {this.state.books.map((book, idx) => (
                 <Carousel.Item key={idx}>
                   <img
-                    className="rounded mx-auto d-block"
+                    className="d-block w-100"
                     src="https://place-hold.it/300x500"
                     alt="First slide" />
                   <Carousel.Caption>
