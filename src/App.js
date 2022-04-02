@@ -2,18 +2,12 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
-// import LoginButton from './LoginButton';
-import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 import { withAuth0 } from "@auth0/auth0-react";
-
-
-
-
 
 class App extends React.Component {
 
@@ -40,28 +34,23 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <h1>Auth0</h1>
+        <h1>Book Share</h1>
         {
           this.props.auth0.isAuthenticated
-            ? <LogoutButton/>
-            : <LoginButton/>
-        }
-        {
-          this.props.auth0.isAuthenticated
-            ? <Content />
-            : <h2>Please Log In</h2>
+            ? <LogoutButton />
+            : <LoginButton />
         }
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
             <Route exact path="/">
-              {this.state.user ? <BestBooks user={this.state.user} /> : <LoginForm loginHandler={this.setLogin} />}
+              {this.props.auth0.isAuthenticated ? <BestBooks user={this.state.user} /> : <h2>Please Log In</h2>}
             </Route>
             <Route exact path="/Profile">
               <Profile userInfo={this.state.user} />
             </Route>
             <Route exact path="/LoginButton">
-              <LoginForm loginHandler={this.setLogin} />
+              {/* <LoginForm loginHandler={this.setLogin} /> */}
             </Route>
             <Route exact path="/LogoutButton">
               <LogoutButton onLogout={this.logoutHandler} />

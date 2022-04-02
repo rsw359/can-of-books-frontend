@@ -40,6 +40,9 @@ class BestBooks extends React.Component {
       // let url = `${process.env.REACT_APP_SERVER}/books`;
       // const bookResults = await axios.get(url);
       console.log(bookResults.data);
+      this.setState ({
+        books: bookResults.data
+      })
     }
   }
 
