@@ -12,7 +12,9 @@ import Profile from './Profile';
 // import LoginButton from './LoginButton';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
-import Login from './Login';
+import Login from './LoginButton';
+import LogoutButton from './LogoutButton';
+import { withAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -43,6 +45,17 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <h1>Auth0</h1>
+        {
+          this.props.auth0.isAuthenticated
+            ? <LogoutButton />
+            : <LoginButton />
+        }
+        {
+          this.props.auth0.isAuthenticated
+            ? <Content />
+            : <h2>Please Log In</h2>
+        }
         <Router>
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
@@ -56,7 +69,7 @@ class App extends React.Component {
               <LoginForm loginHandler={this.setLogin} />
             </Route>
             <Route exact path="/LogoutButton">
-              <LogoutButton onLogout={this.logoutHandler}/>
+              <LogoutButton onLogout={this.logoutHandler} />
             </Route>
           </Switch>
           <Footer />
@@ -66,4 +79,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withAuth0(App);

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Carousel, Container, Button } from 'react-bootstrap';
 import Newbook from './Newbook';
 import UpdateBookModal from './UpdateBookModal';
+import { withAuth0 } from "@auth0/auth0-react";
 
 let SERVER = process.env.REACT_APP_SERVER;
 
@@ -15,6 +16,9 @@ class BestBooks extends React.Component {
     };
   }
   getBooks = async () => {
+    const token = await this.props.auth0.getIdTokenClaims();
+    const jwt = token.__raw;
+    console.log(jwt); 
     try {
       let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);
       this.setState({
@@ -25,6 +29,27 @@ class BestBooks extends React.Component {
       console.log('get book error: ', error.response.data);
     }
   };
+
+  getBooks = async () => {
+    // Stopped for the day
+    // JSON Web Token = JWT (pronounced JOT)
+    if (this.props.auth0.isAuthenticated) {
+      // get token:
+      const res = await this.props.auth0.getIdTokenClaims();
+      
+      const jwt = res.__raw;
+
+      const config = {
+        method: 'get',
+        baseURL: process.env.REACT_APP_SERVER,
+        url: '/books',
+        headers: {"Authorization": `Bearer ${jwt}`}
+      };
+      const bookResults = await axios(config);
+
+      console.log(bookResults.data);
+    }
+  }
 
   postBooks = async (newBook) => {
     try {
@@ -123,4 +148,4 @@ class BestBooks extends React.Component {
   }
 }
 
-export default BestBooks;
+export default withAuth0(BestBooks);
