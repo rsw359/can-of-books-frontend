@@ -16,7 +16,9 @@ class BestBooks extends React.Component {
     };
   }
   getBooks = async () => {
-    
+    const token = await this.props.auth0.getIdTokenClaims();
+    const jwt = token.__raw;
+    console.log(jwt); 
     try {
       let results = await axios.get(`${SERVER}/books?email=${this.props.user}`);
       this.setState({
@@ -46,6 +48,7 @@ class BestBooks extends React.Component {
       const bookResults = await axios(config);
 
       console.log(bookResults.data);
+    }
   }
 
   postBooks = async (newBook) => {

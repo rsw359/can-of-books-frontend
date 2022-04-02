@@ -12,8 +12,8 @@ import Profile from './Profile';
 // import LoginButton from './LoginButton';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
-import Login from './Login';
-import Logout from './Logout';
+import Login from './LoginButton';
+import LogoutButton from './LogoutButton';
 import { withAuth0 } from "@auth0/auth0-react";
 
 
