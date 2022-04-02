@@ -1,27 +1,11 @@
-import React from 'react';
-import Card from 'react-bootstrap/Card';
-import LoginButton from './LoginButton';
-import './Login.css';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import Button from 'react-bootstrap/Button';
 
+const LoginButton = () => {
+  const { loginWithRedirect } = useAuth0();
 
+  return <Button onClick={() => loginWithRedirect()}>Log In</Button>;
+};
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title>Log In</Card.Title>
-          <Card.Text>
-            Click Below to Log In
-          </Card.Text>
-          <LoginButton loginHandler={this.props.loginHandler} />
-        </Card.Body>
-      </Card>
-    );
-  }
-}
-
-export default Login;
+export default LoginButton;
