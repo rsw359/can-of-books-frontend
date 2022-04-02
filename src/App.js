@@ -2,18 +2,13 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import BestBooks from './BestBooks';
 import Profile from './Profile';
 // import LoginButton from './LoginButton';
 import LoginForm from './LoginForm';
 import LogoutButton from './LogoutButton';
-import Login from './LoginButton';
-import LogoutButton from './LogoutButton';
+import LoginButton from './LoginButton';
 import { withAuth0 } from "@auth0/auth0-react";
 
 
@@ -48,8 +43,8 @@ class App extends React.Component {
         <h1>Auth0</h1>
         {
           this.props.auth0.isAuthenticated
-            ? <LogoutButton />
-            : <LoginButton />
+            ? <LogoutButton/>
+            : <LoginButton/>
         }
         {
           this.props.auth0.isAuthenticated
@@ -60,7 +55,7 @@ class App extends React.Component {
           <Header user={this.state.user} onLogout={this.logoutHandler} />
           <Switch>
             <Route exact path="/">
-              {this.state.user ? <BestBooks user={this.state.user} /> : <Login loginHandler={this.setLogin} />}
+              {this.state.user ? <BestBooks user={this.state.user} /> : <LoginForm loginHandler={this.setLogin} />}
             </Route>
             <Route exact path="/Profile">
               <Profile userInfo={this.state.user} />
